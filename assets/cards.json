@@ -1,6 +1,7 @@
 [
-  { "id": "lenina", "title": "Улица Ленина", "image": "assets/images/lenina.jpg", "rarity": "common", "weight": 60 },
-  { "id": "yafunk", "title": "Yafunk — Дом танца", "image": "assets/images/yafunk.jpg", "rarity": "rare", "weight": 30 },
-  { "id": "kremlin", "title": "Кремль (видовой спот)", "image": "assets/images/kremlin.jpg", "rarity": "epic", "weight": 9 },
-  { "id": "secret", "title": "Секретный дворик", "image": "assets/images/secret.jpg", "rarity": "legendary", "weight": 1 }
+  { "id": "leaderdance", "title": "LeaderDance - Школа танцев", "image": "assets/images/leaderdance.jpg", "rarity": "rare", "weight": 30 },
+  { "id": "kutum", "title": "Кутум", "image": "assets/images/kutum.jpg", "rarity": "common", "weight": 60 },
+  { "id": "yafunk", "title": "Yafunk - Дом танца", "image": "assets/images/yafunk.jpg", "rarity": "rare", "weight": 30 },
+  ...
+  { "id": "astrakhan-kremlin", "title": "Астраханский Кремль", "image": "assets/images/kremlin.jpg", "rarity": "legendary", "weight": 1 }
 ]
