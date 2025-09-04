@@ -20,13 +20,13 @@
   { "id": "park_arkadiya", "title": "Парк Аркадия", "image": "assets/images/park_arkadiya.jpg", "rarity": "common", "weight": 60 },
   { "id": "teatr_opera", "title": "Театр Оперы и Балета", "image": "assets/images/teatr_opera.jpg", "rarity": "rare", "weight": 30 },
   { "id": "noviy_most", "title": "Новый Мост", "image": "assets/images/noviy_most.jpg", "rarity": "common", "weight": 60 },
-  { "id": "golden_pistachio", "title": "Golden Pistachio / Гранд Отель", "image": "assets/images/golden_pistachio.jpg", "rarity": "legendary", "weight": 5 },
-  { "id": "birzhevoe_vedomstvo", "title": "Астраханское биржевое ведомство", "image": "assets/images/birzhevoe_vedomstvo.jpg", "rarity": "legendary", "weight": 5 },
-  { "id": "lebediniy_domik", "title": "Лебединый домик", "image": "assets/images/lebediniy_domik.jpg", "rarity": "legendary", "weight": 5 },
+  { "id": "golden_pistachio", "title": "Golden Pistachio / Гранд Отель", "image": "assets/images/golden_pistachio.jpg", "rarity": "legendary", "weight": 1 },
+  { "id": "birzhevoe_vedomstvo", "title": "Астраханское биржевое ведомство", "image": "assets/images/birzhevoe_vedomstvo.jpg", "rarity": "legendary", "weight": 1 },
+  { "id": "lebediniy_domik", "title": "Лебединый домик", "image": "assets/images/lebediniy_domik.jpg", "rarity": "legendary", "weight": 1 },
   { "id": "stary_most", "title": "Старый мост", "image": "assets/images/stary_most.jpg", "rarity": "common", "weight": 60 },
   { "id": "myasokomb_most", "title": "Мясокомбинатский мост", "image": "assets/images/myasokomb_most.jpg", "rarity": "common", "weight": 60 },
   { "id": "pristan_17", "title": "17-я пристань", "image": "assets/images/pristan_17.jpg", "rarity": "rare", "weight": 30 },
-  { "id": "sobor_vladimira", "title": "Собор Святого Владимира", "image": "assets/images/sobor_vladimira.jpg", "rarity": "legendary", "weight": 5 },
-  { "id": "triumfalnaya_arka", "title": "Триумфальная Арка", "image": "assets/images/triumfalnaya_arka.jpg", "rarity": "legendary", "weight": 5 },
-  { "id": "astr_kreml", "title": "Астраханский Кремль", "image": "assets/images/astr_kreml.jpg", "rarity": "legendary", "weight": 1 }
+  { "id": "sobor_vladimira", "title": "Собор Святого Владимира", "image": "assets/images/sobor_vladimira.jpg", "rarity": "legendary", "weight": 1 },
+  { "id": "triumfalnaya_arka", "title": "Триумфальная Арка", "image": "assets/images/triumfalnaya_arka.jpg", "rarity": "legendary", "weight": 1 },
+  { "id": "astr_kreml", "title": "Астраханский Кремль", "image": "assets/images/astr_kreml.jpg", "rarity": "legendary", "weight": 0.1 }
 ]
