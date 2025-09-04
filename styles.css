@@ -4,14 +4,8 @@
   --text:#e7edf3;
   --accent:#56b6ff;
 }
-
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font:16px/1.4 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-  color:var(--text);
-  background:radial-gradient(1200px 800px at 70% -20%,#0f1620,var(--bg));
-}
+body{margin:0;font:16px/1.4 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--text);background:radial-gradient(1200px 800px at 70% -20%,#0f1620,var(--bg))}
 .container{max-width:720px;margin:18px auto;padding:16px}
 .topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:transparent}
 .actions button{margin-left:8px;padding:8px 10px;border-radius:10px;background:#16202a;color:var(--text);border:0;cursor:pointer}
@@ -25,72 +19,30 @@ h1{font-size:28px;margin:4px 0}
 .card img{width:100%;height:300px;object-fit:cover;border-radius:12px;display:block}
 .meta{display:flex;justify-content:space-between;margin-top:10px}
 .rarity{font-weight:800}
-
-/* Новые rarity стили */
-.rarity.обычный {
-  color: #ccc;
-  font-weight: 500;
-}
-.rarity.редкий {
-  color: #6fc3ff; /* голубой */
-  font-weight: 600;
-}
-.rarity.легендарный {
-  color: #ffd166; /* золотой */
-  font-weight: 700;
-}
-.rarity.супер.редкий {
-  color: #d66bff; /* фиолетовый */
-  font-weight: 800;
-}
-
+.rarity.обычный{color:#ccc;font-weight:500}
+.rarity.редкий{color:#6fc3ff;font-weight:600}
+.rarity.легендарный{color:#ffd166;font-weight:700}
+.rarity.супер.редкий{color:#d66bff;font-weight:800}
 .controls{display:flex;gap:10px;margin-top:12px}
 button.primary{background:var(--accent);color:#061018;border-radius:12px;padding:10px 14px;border:0;cursor:pointer}
-
-/* notice */
 .notice{margin-top:8px;background:rgba(255,255,255,.02);padding:8px;border-radius:10px;font-size:14px}
-
-/* modal */
 .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(3,6,10,.6);z-index:50}
 .modal.hidden{display:none}
 .modal-content{width:90%;max-width:720px;background:#07111a;padding:18px;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.7)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:12px}
-.inventory-card{background:rgba(255,255,255,.03);padding:8px;border-radius:8px;text-align:center}
-.inventory-card img{width:100%;height:90px;object-fit:cover;border-radius:6px}
+.inventory-card{background:rgba(255,255,255,.03);padding:8px;border-radius:8px;text-align:center;transition:all .3s; border:2px solid transparent;}
+.inventory-card img{width:100%;height:90px;object-fit:cover;border-radius:6px;}
+.inventory-card.обычный{border-color:#ccc;}
+.inventory-card.редкий{border-color:#6fc3ff;box-shadow:0 0 8px #6fc3ff66;}
+.inventory-card.легендарный{border-color:#ffd166;box-shadow:0 0 12px #ffd16688;}
+.inventory-card.супер.редкий{border-color:#d66bff;box-shadow:0 0 14px #d66bff88;}
 .album-filter{margin-right:8px;padding:8px 10px;border-radius:10px;background:#0f202b;color:var(--text);border:0;cursor:pointer}
 .modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
-
-/* centered disclaimer */
 .centered{max-width:760px;margin:40px auto;padding:20px;background:rgba(255,255,255,.02);border-radius:12px}
 .small{font-size:13px}
-
-/* Кнопки альбомов */
-.albums button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 8px;
-  margin: 4px;
-  cursor: pointer;
-  background: #16202a;   /* тёмный фон вместо белого */
-  color: var(--text);
-  font-size: 14px;
-  transition: 0.2s;
-}
-.albums button:hover {
-  background: #1f2e3a;
-}
-.albums button[data-filter="обычный"] {
-  color: #ccc;
-}
-.albums button[data-filter="редкий"] {
-  color: #6fc3ff;   /* голубой */
-  font-weight: 600;
-}
-.albums button[data-filter="легендарный"] {
-  color: #ffd166;   /* золотой */
-  font-weight: 700;
-}
-.albums button[data-filter="супер редкий"] {
-  color: #d66bff;   /* фиолетовый */
-  font-weight: 800;
-}
+.albums button{padding:8px 14px;border:none;border-radius:8px;margin:4px;cursor:pointer;background:#16202a;color:var(--text);font-size:14px;transition:0.2s;}
+.albums button:hover{background:#1f2e3a}
+.albums button[data-filter="обычный"]{color:#ccc;}
+.albums button[data-filter="редкий"]{color:#6fc3ff;font-weight:600;}
+.albums button[data-filter="легендарный"]{color:#ffd166;font-weight:700;}
+.albums button[data-filter="супер редкий"]{color:#d66bff;font-weight:800;}
