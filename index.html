@@ -8,12 +8,24 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-  <div id="app">
+  <header class="topbar">
+    <div id="welcome">Привет!</div>
+    <div class="actions">
+      <button id="btnInventory">Инвентарь</button>
+      <button id="btnShop">Магазин</button>
+      <button id="btnShare">Поделиться</button>
+    </div>
+  </header>
+
+  <main id="app" class="container">
     <h1>Городские Кейсы</h1>
     <p class="subtitle">Открой кейс и собери редкости</p>
 
     <div class="case">
-      <button id="openBtn">Открыть кейс</button>
+      <div class="pack-area">
+        <button id="openBtn" class="big">Открыть кейс</button>
+        <div id="info" class="info small">Бесплатных открытий сегодня: <span id="leftCount">—</span></div>
+      </div>
 
       <div id="card" class="card hidden" aria-hidden="true">
         <img id="cardImg" alt="Выпавшая карточка" />
@@ -28,7 +40,57 @@
       </div>
 
       <div id="notice" class="notice hidden">
-        Для полноценной работы открой бота в приложении Telegram (мобильное/десктопное).
+        Для корректной работы открой бота в приложении Telegram.
+      </div>
+    </div>
+  </main>
+
+  <!-- Inventory modal -->
+  <div id="inventoryModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Мой инвентарь</h3>
+      <div id="albums">
+        <button class="album-filter" data-rarity="all">Все</button>
+        <button class="album-filter" data-rarity="common">Общий</button>
+        <button class="album-filter" data-rarity="rare">Редкий</button>
+        <button class="album-filter" data-rarity="legendary">Легендарный</button>
+      </div>
+      <div id="inventoryList" class="grid"></div>
+      <div class="modal-actions">
+        <button id="closeInventory">Закрыть</button>
+        <button id="exchangeBtn">Создать оффер обмена</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shop modal (stub) -->
+  <div id="shopModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Магазин</h3>
+      <p>Покупки за TON будут активированы позже. Для теста можно симулировать покупку ниже.</p>
+      <div class="shop-items">
+        <button class="buy" data-count="1">Купить 1 кейс — 2 TON</button>
+        <button class="buy" data-count="5">Купить 5 кейсов — 9 TON</button>
+        <button class="buy" data-count="15">Купить 15 кейсов — 25 TON</button>
+      </div>
+      <div class="modal-actions">
+        <button id="closeShop">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Share modal -->
+  <div id="shareModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Поделиться</h3>
+      <div class="share-buttons">
+        <button id="shareTelegram">Telegram</button>
+        <button id="shareWhatsApp">WhatsApp</button>
+        <button id="shareVK">VK</button>
+        <button id="shareInstagram">Instagram</button>
+      </div>
+      <div class="modal-actions">
+        <button id="closeShare">Закрыть</button>
       </div>
     </div>
   </div>
@@ -36,3 +98,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
