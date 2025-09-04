@@ -68,7 +68,7 @@ function poolByRarity(r) {
   return cards.filter(c => c.rarity === r);
 }
 function allExceptLegendary() {
-  return cards.filter(c => c.rarity !== 'legendary');
+  return cards.filter(c => c.rarity !== 'легендарный' && c.rarity !== 'супер редкий');
 }
 
 // ========== Weighted random for general use ==========
@@ -85,17 +85,17 @@ function weightedRandom(items) {
 
 // ========== Free vs Paid drop logic ==========
 function getFreeDrop() {
-  // First check for kremlin ultra-rare
+  // First check for Kremlin ultra-rare
   if (Math.random() < KREML_CHANCE) {
     const k = cards.find(c => c.id === 'astr_kreml');
     if (k) return k;
   }
   // Legendary chance (very small)
   if (Math.random() < LEGENDARY_FREE_CHANCE) {
-    const pool = poolByRarity('legendary');
+    const pool = poolByRarity('легендарный');
     if (pool.length) return weightedRandom(pool);
   }
-  // Otherwise choose from all except legendary (common/rare/epic)
+  // Otherwise choose from all except legendary
   const pool = allExceptLegendary();
   return weightedRandom(pool);
 }
@@ -103,7 +103,7 @@ function getFreeDrop() {
 function getPaidDrop() {
   // Paid packs have much higher chance for legend (example)
   if (Math.random() < PAID_LEGENDARY_CHANCE) {
-    const pool = poolByRarity('legendary');
+    const pool = poolByRarity('легендарный');
     return weightedRandom(pool);
   }
   // else weighted
@@ -149,7 +149,7 @@ function showDrop(d) {
   drop = d;
   cardImg.src = d.image;
   cardTitle.textContent = d.title;
-  cardRarity.textContent = (d.rarity || 'UNKNOWN').toUpperCase();
+  cardRarity.textContent = d.rarity || 'Неизвестно';
   cardRarity.className = `rarity ${d.rarity || ''}`;
   cardEl.classList.remove('hidden');
   cardEl.setAttribute('aria-hidden', 'false');
@@ -283,7 +283,6 @@ function shareCardById(cardId) {
 
 // ========== Exchange: create offer code (local) ==========
 function createOffer(cardId) {
-  // For v1 offer is a code stored in localStorage and shown to user to send to friend
   const data = loadUserData();
   const idx = data.inventory?.findIndex(i => i.id === cardId);
   if (idx == null || idx === -1) { alert('Карта не найдена в инвентаре'); return; }
@@ -294,7 +293,7 @@ function createOffer(cardId) {
     ts: Date.now()
   };
   // remove card from inventory (reserved)
-  const removed = data.inventory.splice(idx,1);
+  data.inventory.splice(idx,1);
   saveUserData(data);
   // save offer globally in localStorage (offers pool)
   const offers = JSON.parse(localStorage.getItem('offers_pool') || '[]');
@@ -380,3 +379,4 @@ setTimeout(()=>{ updateLeftCount(); setWelcome(); }, 600);
 
 // expose acceptOffer for manual testing (e.g., in console)
 window.acceptOffer = acceptOffer;
+
