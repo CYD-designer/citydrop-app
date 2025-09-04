@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Городские Кейсы — Согласие</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="disclaimer">
+    <h1>Добро пожаловать в "Городские Кейсы"</h1>
+    <p>Мини-игра носит развлекательный характер. Мы не несем ответственности за использование приложения. 
+       Все карточки бесплатные или за внутриигровую валюту (TON). Продолжая, вы подтверждаете согласие.</p>
+    <button id="acceptBtn">Принять и продолжить</button>
+  </div>
+
+  <script>
+    document.getElementById('acceptBtn').addEventListener('click', () => {
+      window.location.href = 'index.html'; // переход к мини-аппу
+    });
+  </script>
+</body>
+</html>
