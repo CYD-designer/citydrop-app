@@ -34,7 +34,7 @@
           <div id="cardRarity" class="rarity"></div>
         </div>
         <div class="controls">
-          <button id="claimBtn" class="primary">Забрать выпадение</button>
+          <button id="claimBtn" class="primary">Забрать</button>
           <button id="openAgainBtn">Открыть ещё</button>
         </div>
       </div>
@@ -49,12 +49,13 @@
   <div id="inventoryModal" class="modal hidden">
     <div class="modal-content">
       <h3>Мой инвентарь</h3>
-      <div id="albums">
-        <button class="album-filter" data-rarity="all">Все</button>
-        <button class="album-filter" data-rarity="common">Общий</button>
-        <button class="album-filter" data-rarity="rare">Редкий</button>
-        <button class="album-filter" data-rarity="legendary">Легендарный</button>
-      </div>
+   <div class="albums">
+  <button data-filter="all">Все</button>
+  <button data-filter="обычный">Обычные</button>
+  <button data-filter="редкий">Редкие</button>
+  <button data-filter="легендарный">Легендарные</button>
+</div>
+
       <div id="inventoryList" class="grid"></div>
       <div class="modal-actions">
         <button id="closeInventory">Закрыть</button>
