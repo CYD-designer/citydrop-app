@@ -170,10 +170,20 @@ function setWelcome(){
 setWelcome();
 updateLeftCount();
 // ===== Tab bar navigation =====
-document.querySelectorAll('.tabbar button').forEach(btn=>{
+const tabButtons = document.querySelectorAll('.tabbar button');
+
+tabButtons.forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const pageId = btn.dataset.page;
+    // прячем все страницы
     document.querySelectorAll('.container, .page').forEach(p=>p.classList.add('hidden'));
+    // показываем выбранную
     document.getElementById(pageId).classList.remove('hidden');
+    // активное состояние
+    tabButtons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
   });
 });
+
+// по умолчанию активная Главная
+document.querySelector('.tabbar button[data-page="mainPage"]').classList.add('active');
