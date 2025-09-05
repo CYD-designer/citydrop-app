@@ -1,102 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Городские Кейсы</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<meta charset="UTF-8">
+<title>Эмулятор кейсов Telegram</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div id="welcome">Привет!</div>
-    <div class="actions">
-      <button id="btnInventory">Инвентарь</button>
-      <button id="btnShop">Магазин</button>
-      <button id="btnShare">Поделиться</button>
+<div class="container">
+  <h1>Эмулятор кейсов</h1>
+  <div class="subtitle">Бесплатные и платные открытия</div>
+  
+  <div class="case">
+    <button id="openBtn" class="big">Бесплатное открытие</button>
+    <button id="openAgainBtn" class="big">Открыть ещё раз</button>
+  </div>
+  
+  <div id="card" class="card hidden">
+    <img id="cardImg" src="" alt="">
+    <div class="meta">
+      <div id="cardTitle">Название</div>
+      <div id="cardRarity" class="rarity">Редкость</div>
     </div>
-  </header>
+    <button id="claimBtn" class="primary">Забрать карту</button>
+  </div>
 
-  <main id="app" class="container">
-    <h1>Городские Кейсы</h1>
-    <p class="subtitle">Открой кейс и собери редкости</p>
+  <div>Осталось бесплатных: <span id="leftCount">0</span></div>
 
-    <div class="case">
-      <div class="pack-area">
-        <button id="openBtn" class="big">Открыть кейс</button>
-        <div id="info" class="info small">Бесплатных открытий сегодня: <span id="leftCount">—</span></div>
-      </div>
+  <div class="albums">
+    <button class="album-filter" data-rarity="all">Все</button>
+    <button class="album-filter" data-rarity="обычный">Обычные</button>
+    <button class="album-filter" data-rarity="редкий">Редкие</button>
+    <button class="album-filter" data-rarity="легендарный">Легендарные</button>
+    <button class="album-filter" data-rarity="супер редкий">Супер редкие</button>
+  </div>
+  <button id="btnInventory" class="big">Инвентарь</button>
 
-      <div id="card" class="card hidden" aria-hidden="true">
-        <img id="cardImg" alt="Выпавшая карточка" />
-        <div class="meta">
-          <div id="cardTitle"></div>
-          <div id="cardRarity" class="rarity"></div>
-        </div>
-        <div class="controls">
-          <button id="claimBtn" class="primary">Забрать</button>
-          <button id="openAgainBtn">Открыть ещё</button>
-        </div>
-      </div>
-
-      <div id="notice" class="notice hidden">
-        Для корректной работы открой бота в приложении Telegram.
-      </div>
-    </div>
-  </main>
-
-  <!-- Inventory modal -->
   <div id="inventoryModal" class="modal hidden">
     <div class="modal-content">
-      <h3>Мой инвентарь</h3>
-   <div class="albums">
-  <button data-filter="all">Все</button>
-  <button data-filter="обычный">Обычные</button>
-  <button data-filter="редкий">Редкие</button>
-  <button data-filter="легендарный">Легендарные</button>
-</div>
-
+      <h2>Инвентарь</h2>
       <div id="inventoryList" class="grid"></div>
-      <div class="modal-actions">
-        <button id="closeInventory">Закрыть</button>
-        <button id="exchangeBtn">Создать оффер обмена</button>
-      </div>
+      <button id="closeInventory" class="primary">Закрыть</button>
     </div>
   </div>
 
-  <!-- Shop modal (stub) -->
-  <div id="shopModal" class="modal hidden">
-    <div class="modal-content">
-      <h3>Магазин</h3>
-      <p>Покупки за TON будут активированы позже. Для теста можно симулировать покупку ниже.</p>
-      <div class="shop-items">
-        <button class="buy" data-count="1">Купить 1 кейс — 2 TON</button>
-        <button class="buy" data-count="5">Купить 5 кейсов — 9 TON</button>
-        <button class="buy" data-count="15">Купить 15 кейсов — 25 TON</button>
-      </div>
-      <div class="modal-actions">
-        <button id="closeShop">Закрыть</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Share modal -->
-  <div id="shareModal" class="modal hidden">
-    <div class="modal-content">
-      <h3>Поделиться</h3>
-      <div class="share-buttons">
-        <button id="shareTelegram">Telegram</button>
-        <button id="shareWhatsApp">WhatsApp</button>
-        <button id="shareVK">VK</button>
-        <button id="shareInstagram">Instagram</button>
-      </div>
-      <div class="modal-actions">
-        <button id="closeShare">Закрыть</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <div id="welcome"></div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
-
