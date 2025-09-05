@@ -1,61 +1,69 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Эмулятор кейсов Telegram</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Эмулятор кейсов Telegram</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container" id="mainPage">
-  <h1>Эмулятор кейсов</h1>
-  <div class="subtitle">Бесплатные и платные открытия</div>
-  
-  <div class="case">
-    <button id="openBtn" class="big">Бесплатное открытие</button>
-    <button id="openAgainBtn" class="big">Открыть ещё раз</button>
-  </div>
-  
-  <div id="card" class="card hidden">
-    <img id="cardImg" src="" alt="">
-    <div class="meta">
-      <div id="cardTitle">Название</div>
-      <div id="cardRarity" class="rarity">Редкость</div>
+  <!-- Canvas фон -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Главная страница -->
+  <div class="container page" id="mainPage">
+    <h1>Эмулятор кейсов</h1>
+    <div class="subtitle">Бесплатные и платные открытия</div>
+    
+    <div class="case">
+      <button id="openBtn" class="big">Бесплатное открытие</button>
+      <button id="openAgainBtn" class="big">Открыть ещё раз</button>
     </div>
-    <button id="claimBtn" class="primary">Забрать карту</button>
+    
+    <div id="card" class="card hidden">
+      <img id="cardImg" src="" alt="">
+      <div class="meta">
+        <div id="cardTitle">Название</div>
+        <div id="cardRarity" class="rarity">Редкость</div>
+      </div>
+      <button id="claimBtn" class="primary">Забрать карту</button>
+    </div>
+  
+    <div class="info">Осталось бесплатных: <span id="leftCount">0</span></div>
   </div>
 
-  <div class="info">Осталось бесплатных: <span id="leftCount">0</span></div>
-</div>
-
-<!-- Inventory -->
-<div id="inventoryModal" class="page hidden">
-  <h2>Инвентарь</h2>
-  <div class="albums">
-    <button class="album-filter" data-rarity="all">Все</button>
-    <button class="album-filter" data-rarity="обычный">Обычные</button>
-    <button class="album-filter" data-rarity="редкий">Редкие</button>
-    <button class="album-filter" data-rarity="легендарный">Легендарные</button>
-    <button class="album-filter" data-rarity="супер редкий">Супер редкие</button>
+  <!-- Инвентарь -->
+  <div id="inventoryModal" class="page hidden">
+    <h2>Инвентарь</h2>
+    <div class="albums">
+      <button class="album-filter" data-rarity="all">Все</button>
+      <button class="album-filter" data-rarity="обычный">Обычные</button>
+      <button class="album-filter" data-rarity="редкий">Редкие</button>
+      <button class="album-filter" data-rarity="легендарный">Легендарные</button>
+      <button class="album-filter" data-rarity="супер редкий">Супер редкие</button>
+    </div>
+    <div id="inventoryList" class="grid"></div>
   </div>
-  <div id="inventoryList" class="grid"></div>
-</div>
 
-<!-- Магазин -->
-<div id="shopModal" class="page hidden">
-  <h2>Магазин</h2>
-  <p>Здесь будут покупки кейсов</p>
-</div>
+  <!-- Магазин -->
+  <div id="shopModal" class="page hidden">
+    <h2>Магазин</h2>
+    <p>Здесь будут покупки кейсов</p>
+  </div>
 
-<!-- Профиль -->
-<div id="profilePage" class="page hidden">
-  <h2>Профиль</h2>
-  <div id="welcome"></div>
-</div>
+  <!-- Профиль -->
+  <div id="profilePage" class="page hidden">
+    <h2>Профиль</h2>
+    <div id="welcome"></div>
+  </div>
 
-<!-- Tab bar -->
-<div class="tabbar">
-  <button data-page="mainPage">🏠<span>Главная</span></button>
-  <button data-page="inventoryModal">📦<span>Инвентарь</span></button>
-  <button data-page="shopModal">🛒<span>Магазин</span></button>
-  <button data-page="profilePage">👤<span>Профиль</span></button>
-</div>
+  <!-- Tab bar -->
+  <div class="tabbar">
+    <button data-page="mainPage" class="active">🎁<span>Кейсы</span></button>
+    <button data-page="inventoryModal">📦<span>Инвентарь</span></button>
+    <button data-page="shopModal">🛒<span>Магазин</span></button>
+    <button data-page="profilePage">👤<span>Профиль</span></button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
