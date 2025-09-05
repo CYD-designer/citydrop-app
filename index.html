@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
+<div class="container" id="mainPage">
   <h1>Эмулятор кейсов</h1>
   <div class="subtitle">Бесплатные и платные открытия</div>
   
@@ -24,8 +24,12 @@
     <button id="claimBtn" class="primary">Забрать карту</button>
   </div>
 
-  <div>Осталось бесплатных: <span id="leftCount">0</span></div>
+  <div class="info">Осталось бесплатных: <span id="leftCount">0</span></div>
+</div>
 
+<!-- Inventory -->
+<div id="inventoryModal" class="page hidden">
+  <h2>Инвентарь</h2>
   <div class="albums">
     <button class="album-filter" data-rarity="all">Все</button>
     <button class="album-filter" data-rarity="обычный">Обычные</button>
@@ -33,18 +37,29 @@
     <button class="album-filter" data-rarity="легендарный">Легендарные</button>
     <button class="album-filter" data-rarity="супер редкий">Супер редкие</button>
   </div>
-  <button id="btnInventory" class="big">Инвентарь</button>
+  <div id="inventoryList" class="grid"></div>
+</div>
 
-  <div id="inventoryModal" class="modal hidden">
-    <div class="modal-content">
-      <h2>Инвентарь</h2>
-      <div id="inventoryList" class="grid"></div>
-      <button id="closeInventory" class="primary">Закрыть</button>
-    </div>
-  </div>
+<!-- Магазин -->
+<div id="shopModal" class="page hidden">
+  <h2>Магазин</h2>
+  <p>Здесь будут покупки кейсов</p>
+</div>
 
+<!-- Профиль -->
+<div id="profilePage" class="page hidden">
+  <h2>Профиль</h2>
   <div id="welcome"></div>
 </div>
+
+<!-- Tab bar -->
+<div class="tabbar">
+  <button data-page="mainPage">🏠 Главная</button>
+  <button data-page="inventoryModal">📦 Инвентарь</button>
+  <button data-page="shopModal">🛒 Магазин</button>
+  <button data-page="profilePage">👤 Профиль</button>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
