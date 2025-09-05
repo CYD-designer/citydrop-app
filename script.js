@@ -169,3 +169,11 @@ function setWelcome(){
 }
 setWelcome();
 updateLeftCount();
+// ===== Tab bar navigation =====
+document.querySelectorAll('.tabbar button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const pageId = btn.dataset.page;
+    document.querySelectorAll('.container, .page').forEach(p=>p.classList.add('hidden'));
+    document.getElementById(pageId).classList.remove('hidden');
+  });
+});
