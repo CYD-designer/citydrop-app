@@ -119,14 +119,27 @@ h1 { font-size: 28px; margin: 4px 0; }
   align-items: center;
   border-top: 1px solid #333;
 }
+
 .tabbar button {
   background: none;
   border: none;
   color: var(--text);
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 0;
+  transition: 0.2s;
 }
-.tabbar button:hover {
-  color: var(--accent);
+
+.tabbar button span {
+  font-size: 12px;
+  margin-top: 2px;
+  opacity: 0.8;
 }
+
+/* Цвета иконок */
+.tabbar button[data-page="mainPage"] {
