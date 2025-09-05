@@ -170,18 +170,30 @@ function setWelcome(){
 setWelcome();
 updateLeftCount();
 
-// ==== Tab bar navigation ====
-const tabButtons = document.querySelectorAll('.tabbar button');
-tabButtons.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const pageId = btn.dataset.page;
-    document.querySelectorAll('.container, .page').forEach(p=>p.classList.add('hidden'));
-    document.getElementById(pageId).classList.remove('hidden');
-    tabButtons.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-document.querySelector('.tabbar button[data-page="mainPage"]').classList.add('active');
+// === Tab bar навигация ===
+const tabHome = document.getElementById('tabHome');
+const tabInventory = document.getElementById('tabInventory');
+const tabShopBtn = document.getElementById('tabShop');
+const tabShareBtn = document.getElementById('tabShare');
 
-// по умолчанию активная Главная
-document.querySelector('.tabbar button[data-page="mainPage"]').classList.add('active');
+tabHome.addEventListener('click', ()=>{
+  tabSetActive(tabHome);
+  document.querySelector('.case').scrollIntoView({behavior:'smooth'});
+});
+tabInventory.addEventListener('click', ()=>{
+  tabSetActive(tabInventory);
+  openInventory();
+});
+tabShopBtn.addEventListener('click', ()=>{
+  tabSetActive(tabShopBtn);
+  shopModal.classList.remove('hidden');
+});
+tabShareBtn.addEventListener('click', ()=>{
+  tabSetActive(tabShareBtn);
+  shareModal.classList.remove('hidden');
+});
+
+function tabSetActive(btn) {
+  document.querySelectorAll('.tabbar button').forEach(b=> b.classList.remove('active'));
+  btn.classList.add('active');
+}
