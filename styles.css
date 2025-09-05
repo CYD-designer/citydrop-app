@@ -48,12 +48,14 @@ h1 { font-size: 28px; margin: 4px 0; }
   width: 100%;
 }
 
+/* --- Glow рамки карт --- */
 .card {
   border-radius: 18px;
   background: var(--card-bg);
   padding: 14px;
   box-shadow: 0 20px 50px rgba(0,0,0,.6);
   margin-top: 12px;
+  transition: 0.3s;
 }
 .card.hidden { display: none; }
 .card img {
@@ -69,10 +71,52 @@ h1 { font-size: 28px; margin: 4px 0; }
   font-weight: bold;
 }
 
-.rarity.обычный { color: #ccc; }
-.rarity.редкий { color: #6fc3ff; }
-.rarity.легендарный { color: #ffd166; }
-.rarity.супер.редкий { color: #d66bff; }
+/* --- Glow эффекты редкости --- */
+.rarity.обычный {
+  color: #ccc;
+  font-weight: 500;
+}
+.rarity.редкий {
+  color: #6fc3ff;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(111,195,255,0.8);
+}
+.rarity.легендарный {
+  color: #ffd166;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255,209,102,0.9);
+}
+.rarity.супер.редкий {
+  color: #d66bff;
+  font-weight: 800;
+  text-shadow: 0 0 12px rgba(214,107,255,0.9);
+}
+
+/* --- Glow рамки самих карт --- */
+.card.обычный {
+  border: 2px solid rgba(255,255,255,0.05);
+}
+.card.редкий {
+  border: 2px solid #6fc3ff;
+  box-shadow: 0 0 15px rgba(111,195,255,0.6);
+}
+.card.легендарный {
+  border: 2px solid #ffd166;
+  box-shadow: 0 0 20px rgba(255,209,102,0.7);
+}
+.card.супер.редкий {
+  border: 2px solid #d66bff;
+  box-shadow: 0 0 25px rgba(214,107,255,0.7);
+}
+
+/* --- Анимация выпадения карты --- */
+@keyframes dropIn {
+  0% { opacity: 0; transform: scale(0.8) translateY(40px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.card.revealed {
+  animation: dropIn 0.6s ease forwards;
+}
 
 .grid {
   display: grid;
@@ -106,7 +150,7 @@ h1 { font-size: 28px; margin: 4px 0; }
 
 .page.hidden { display: none; }
 
-/* Tab bar */
+/* --- Tab bar --- */
 .tabbar {
   position: fixed;
   bottom: 0;
@@ -118,8 +162,8 @@ h1 { font-size: 28px; margin: 4px 0; }
   justify-content: space-around;
   align-items: center;
   border-top: 1px solid #333;
+  z-index: 100;
 }
-
 .tabbar button {
   background: none;
   border: none;
@@ -134,12 +178,19 @@ h1 { font-size: 28px; margin: 4px 0; }
   padding: 6px 0;
   transition: 0.2s;
 }
-
+.tabbar button.active {
+  color: #56b6ff;
+  font-weight: 600;
+}
 .tabbar button span {
   font-size: 12px;
   margin-top: 2px;
   opacity: 0.8;
 }
 
-/* Цвета иконок */
-.tabbar button[data-page="mainPage"] {
+/* --- Фон с canvas --- */
+#bgCanvas {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  z-index: -1;
+}
