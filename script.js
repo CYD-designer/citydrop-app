@@ -23,18 +23,18 @@ const openAgainBtn = document.getElementById('openAgainBtn');
 const leftCountEl = document.getElementById('leftCount');
 const welcomeEl = document.getElementById('welcome');
 
-const btnInventory = document.getElementById('btnInventory');
+const btnInventory = document.getElementById('tabInventory');
 const inventoryModal = document.getElementById('inventoryModal');
 const inventoryList = document.getElementById('inventoryList');
-const closeInventory = document.getElementById('closeInventory');
 const albumFilters = document.querySelectorAll('.album-filter');
 
-// Платное открытие (создадим кнопку на лету)
+// Платное открытие (кнопка на лету)
 const paidBtn = document.createElement('button');
 paidBtn.textContent = "Платное открытие";
 paidBtn.className = "primary big";
 document.querySelector('.case').appendChild(paidBtn);
 
+// ==== Карты ====
 let cards = [
   {id:'c1',title:'Карта 1',rarity:'обычный',image:'assets/images/card1.jpg'},
   {id:'c2',title:'Карта 2',rarity:'редкий',image:'assets/images/card2.jpg'},
@@ -78,29 +78,35 @@ function addToInventory(card){
 function getRandomCard(free=true){
   const r = Math.random();
   if(free){
-    if(r<0.5) return cards[0]; // обычный
-    if(r<0.75) return cards[1]; // редкий
-    if(r<0.95) return cards[2]; // легендарный
-    return cards[3]; // супер редкий
+    if(r<0.5) return cards[0];
+    if(r<0.75) return cards[1];
+    if(r<0.95) return cards[2];
+    return cards[3];
   } else {
-    // Платное открытие: шанс легендарного повышен
-    if(r < PAID_LEGENDARY_CHANCE) return cards[2]; // легендарный
-    if(r < PAID_LEGENDARY_CHANCE+0.3) return cards[1]; // редкий
-    if(r < PAID_LEGENDARY_CHANCE+0.45) return cards[0]; // обычный
-    return cards[3]; // супер редкий
+    if(r < PAID_LEGENDARY_CHANCE) return cards[2];
+    if(r < PAID_LEGENDARY_CHANCE+0.3) return cards[1];
+    if(r < PAID_LEGENDARY_CHANCE+0.45) return cards[0];
+    return cards[3];
   }
 }
 
-// ==== UI ====
-function showDrop(d){
+// ==== UI: показываем карту с glow и анимацией ====
+function showDrop(d) {
+  if (!d) return;
   drop = d;
   cardImg.src = d.image;
   cardTitle.textContent = d.title;
-  cardRarity.textContent = d.rarity;
-  cardRarity.className = 'rarity '+d.rarity;
+  cardRarity.textContent = d.rarity || 'Неизвестно';
+
+  // Сбрасываем старые классы и добавляем редкость + анимацию
+  cardRarity.className = `rarity ${d.rarity || ''}`;
+  cardEl.className = `card ${d.rarity || ''} revealed`;
+
   cardEl.classList.remove('hidden');
+  cardEl.setAttribute('aria-hidden', 'false');
   updateLeftCount();
 }
+
 function updateLeftCount(){
   leftCountEl.textContent = availableFreeOpens().left;
 }
@@ -115,7 +121,6 @@ openBtn.addEventListener('click',()=>{
   addToInventory(d);
   showDrop(d);
 });
-// Бесплатное повторное
 openAgainBtn.addEventListener('click',()=>{
   const avail = availableFreeOpens();
   if(avail.left<=0){ alert('Бесплатные открытия закончились'); return; }
@@ -124,7 +129,6 @@ openAgainBtn.addEventListener('click',()=>{
   addToInventory(d);
   showDrop(d);
 });
-// Платное открытие
 paidBtn.addEventListener('click',()=>{
   const d = getRandomCard(false);
   addToInventory(d);
@@ -140,12 +144,8 @@ claimBtn.addEventListener('click',()=>{
 
 // ==== Inventory ====
 btnInventory.addEventListener('click',()=>{ inventoryModal.classList.remove('hidden'); renderInventory('all'); });
-closeInventory.addEventListener('click',()=>{ inventoryModal.classList.add('hidden'); });
-
 albumFilters.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    renderInventory(btn.dataset.rarity);
-  });
+  btn.addEventListener('click',()=>{ renderInventory(btn.dataset.rarity); });
 });
 
 function renderInventory(filter='all'){
@@ -169,21 +169,19 @@ function setWelcome(){
 }
 setWelcome();
 updateLeftCount();
-// ===== Tab bar navigation =====
-const tabButtons = document.querySelectorAll('.tabbar button');
 
+// ==== Tab bar navigation ====
+const tabButtons = document.querySelectorAll('.tabbar button');
 tabButtons.forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const pageId = btn.dataset.page;
-    // прячем все страницы
     document.querySelectorAll('.container, .page').forEach(p=>p.classList.add('hidden'));
-    // показываем выбранную
     document.getElementById(pageId).classList.remove('hidden');
-    // активное состояние
     tabButtons.forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
   });
 });
+document.querySelector('.tabbar button[data-page="mainPage"]').classList.add('active');
 
 // по умолчанию активная Главная
 document.querySelector('.tabbar button[data-page="mainPage"]').classList.add('active');
